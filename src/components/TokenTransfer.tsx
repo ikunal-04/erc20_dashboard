@@ -15,7 +15,7 @@ const TokenTransfer: React.FC = () => {
   const [recipient, setRecipient] = useState('');
   const [amount, setAmount] = useState('');
   const [tokenAddress, setTokenAddress] = useState(
-    '0x6B175474E89094C44Da98b954EedeAC495271d0F' // DAI by default
+    '0xF1C1865253524F47Ce6ba1eAF35F8B914a852602'
   );
   const [loading, setLoading] = useState(false);
 
@@ -51,7 +51,7 @@ const TokenTransfer: React.FC = () => {
   if (!account) return null;
 
   return (
-    <div className="bg-white p-6 rounded-lg shadow-md dark:shadow-white dark:bg-blue-400">
+    <div className="bg-blue-300 p-6 rounded-lg shadow-md dark:shadow-white dark:bg-blue-400">
       <div className="flex items-center space-x-2 mb-4">
         <Send className="text-blue-600" />
         <h2 className="text-xl font-semibold">Transfer Tokens</h2>
@@ -67,8 +67,7 @@ const TokenTransfer: React.FC = () => {
             onChange={(e) => setTokenAddress(e.target.value)}
             className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:text-black"
           >
-            <option value="0xe3520349f477a5f6eb06107066048508498a291b">DAI</option>
-            <option value="0xdAC17F958D2ee523a2206206994597C13D831ec7">USDT</option>
+            <option value="0xF1C1865253524F47Ce6ba1eAF35F8B914a852602">DAI</option>
           </select>
         </div>
 
