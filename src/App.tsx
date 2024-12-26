@@ -6,6 +6,7 @@ import TokenBalance from "./components/TokenBalance"
 import TokenTransfer from "./components/TokenTransfer"
 import RecentTransactions from "./components/RecentTransactions"
 import { LucideLayoutDashboard } from 'lucide-react'
+import { Analytics } from "@vercel/analytics/react"
 
 function App() {
   return (
@@ -62,6 +63,7 @@ function App() {
           }}
         />
       </WalletProvider>
+      <Analytics />
     </ThemeProvider>
   )
 }
