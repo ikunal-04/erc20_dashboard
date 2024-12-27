@@ -1,50 +1,64 @@
-# React + TypeScript + Vite
+# Blockchain Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to the Blockchain Dashboard project! This project aims to provide a user-friendly interface for monitoring and managing ERC20 tokens on the blockchain.
 
-Currently, two official plugins are available:
+### Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. Wallet Connection: Users can connect their Ethereum wallet (e.g., MetaMask) to the dashboard.
+2. Token Balances: Displays the user's DAI token balance.
+3. Token Transfer: Allows users to transfer DAI tokens (have created own contract on base sepolia chain) to another wallet address.
+4. Recent Transactions: Shows recent transactions for the connected wallet using the Blockscout API for base sepolia testnet.
+5. Responsive Design: Works well on both mobile and desktop views.
+6. Dark Mode: Supports dark mode for better viewing in low-light conditions.
 
-## Expanding the ESLint configuration
+### Technologies Used
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- React.js (with hooks and functional components)
+- ethers.js
+- Tailwind CSS
+- Blockscout API
 
-- Configure the top-level `parserOptions` property like this:
+### Setup Instructions
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+To get started with the Blockchain Dashboard, follow these steps:
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+1. Clone the repository:
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+  ```bash
+  git clone https://github.com/ikunal-04/erc20dashboard.git
+  ```
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+2. Install the project dependencies:
+
+  ```bash
+  cd erc20dashboard
+  pnpm install
+  ```
+
+3. Configure the project:
+
+  - As we are using the blockscout api so here in this project we don't need any api key provided by etherscan or any other explorer.
+
+4. Start the development server:
+
+  ```bash
+  pnpm dev
+  ```
+
+5. Open your browser and navigate to `http://localhost:5173` to access the Blockchain Dashboard.
+
+### Design Decisions
+
+1. **Component Structure**: The application is divided into several components (WalletConnection, TokenBalance, TokenTransfer, RecentTransactions) to maintain a clear separation of concerns and improve code readability and maintainability.
+
+2. **State Management**: Zustand is used for global state management, particularly for handling the wallet connection state across components.
+
+3. **Responsive Design**: Tailwind CSS is utilized to create a responsive layout that adapts to different screen sizes.
+
+4. **Dark Mode**: Dark mode is implemented using Theming(provided by shadcn), providing a toggle for users to switch between light and dark themes.
+
+5. **Error Handling**: Try-catch blocks are used throughout the application to handle potential errors, especially during blockchain interactions and API calls.
+
+### Challenges Faced
+
+**Getting funds for already existing erc20 tokens on other chains**: Getting faucets was the main issue while developing this project. So to solve it, I've deployed my own ERC20 token (DAI) on base sepolia testnet with a net supply of 100000 tokens, here's the token contract address: ```0xF1C1865253524F47Ce6ba1eAF35F8B914a852602``` with 18 decimals.
